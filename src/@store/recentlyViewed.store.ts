@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import { Movie } from '@/@types/tmdb';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { Movie } from "@/@types/tmdb";
 
 interface RecentlyViewedState {
   recentlyViewed: Movie[];
@@ -25,15 +25,15 @@ export const useRecentlyViewedStore = create<RecentlyViewedState>()(
       },
     }),
     {
-      name: 'tmdb_recently_viewed',
+      name: "tmdb_recently_viewed",
       storage: createJSONStorage(() => {
-        if (typeof window !== 'undefined') return localStorage;
+        if (typeof window !== "undefined") return localStorage;
         return {
           getItem: () => null,
           setItem: () => {},
           removeItem: () => {},
         };
       }),
-    }
-  )
+    },
+  ),
 );

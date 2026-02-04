@@ -1,13 +1,13 @@
-import { Suspense } from 'react';
-import { getGenres, getMoviesByGenre } from '@/@services/tmdb';
-import MovieGrid from '@/@components/movie/MovieGrid';
-import Container from '@/@layouts/Container';
-import EmptyState from '@/@components/ui/EmptyState';
-import ErrorState from '@/@components/ui/ErrorState';
-import GenreHeader from '@/features/genre/GenreHeader';
-import SortDropdown from '@/features/genre/SortDropdown';
-import Pagination from '@/features/genre/Pagination';
-import MovieSkeleton from '@/@components/movie/MovieSkeleton';
+import { Suspense } from "react";
+import { getGenres, getMoviesByGenre } from "@/@services/tmdb";
+import MovieGrid from "@/@components/movie/MovieGrid";
+import Container from "@/@layouts/Container";
+import EmptyState from "@/@components/ui/EmptyState";
+import ErrorState from "@/@components/ui/ErrorState";
+import GenreHeader from "@/features/genre/GenreHeader";
+import SortDropdown from "@/features/genre/SortDropdown";
+import Pagination from "@/features/genre/Pagination";
+import MovieSkeleton from "@/@components/movie/MovieSkeleton";
 
 type PageProps = {
   params: Promise<{ id: string }>;
@@ -17,16 +17,16 @@ type PageProps = {
 export default async function GenrePage({ params, searchParams }: PageProps) {
   const { id } = await params;
   const resolvedSearchParams = await searchParams;
-  const sortBy = resolvedSearchParams.sortBy || 'popularity.desc';
+  const sortBy = resolvedSearchParams.sortBy || "popularity.desc";
   const page = Number(resolvedSearchParams.page) || 1;
   const genreId = Number(id);
 
   if (isNaN(genreId)) {
     return (
       <Container>
-        <ErrorState 
-          title="Invalid Genre" 
-          description="The genre ID provided is invalid." 
+        <ErrorState
+          title="Invalid Genre"
+          description="The genre ID provided is invalid."
         />
       </Container>
     );
@@ -41,9 +41,9 @@ export default async function GenrePage({ params, searchParams }: PageProps) {
   if (!genresData || !genresData.genres) {
     return (
       <Container>
-        <ErrorState 
-          title="Error loading genres" 
-          description="Could not fetch genre information." 
+        <ErrorState
+          title="Error loading genres"
+          description="Could not fetch genre information."
         />
       </Container>
     );
@@ -54,9 +54,9 @@ export default async function GenrePage({ params, searchParams }: PageProps) {
   if (!genre) {
     return (
       <Container>
-        <ErrorState 
-          title="Genre not found" 
-          description={`Could not find a genre with ID ${id}.`} 
+        <ErrorState
+          title="Genre not found"
+          description={`Could not find a genre with ID ${id}.`}
         />
       </Container>
     );
@@ -79,9 +79,9 @@ export default async function GenrePage({ params, searchParams }: PageProps) {
             <Pagination page={page} totalPages={Math.min(totalPages, 500)} />
           </>
         ) : (
-          <EmptyState 
-            title="No movies found" 
-            description="We couldn't find any movies for this genre." 
+          <EmptyState
+            title="No movies found"
+            description="We couldn't find any movies for this genre."
           />
         )}
       </Container>

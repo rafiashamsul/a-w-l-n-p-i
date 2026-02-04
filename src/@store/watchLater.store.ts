@@ -1,6 +1,6 @@
-import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import { Movie } from '@/@types/tmdb';
+import { create } from "zustand";
+import { persist, createJSONStorage } from "zustand/middleware";
+import { Movie } from "@/@types/tmdb";
 
 interface WatchLaterState {
   watchLater: Movie[];
@@ -32,15 +32,15 @@ export const useWatchLaterStore = create<WatchLaterState>()(
       },
     }),
     {
-      name: 'tmdb_watch_later',
+      name: "tmdb_watch_later",
       storage: createJSONStorage(() => {
-        if (typeof window !== 'undefined') return localStorage;
+        if (typeof window !== "undefined") return localStorage;
         return {
           getItem: () => null,
           setItem: () => {},
           removeItem: () => {},
         };
       }),
-    }
-  )
+    },
+  ),
 );

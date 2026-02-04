@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { FC } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { twMerge } from 'tailwind-merge';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { FC } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { twMerge } from "tailwind-merge";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 type PaginationProps = {
   page: number;
@@ -19,7 +19,7 @@ const Pagination: FC<PaginationProps> = ({ page, totalPages }) => {
     if (newPage < 1 || newPage > totalPages) return;
 
     const params = new URLSearchParams(searchParams.toString());
-    params.set('page', newPage.toString());
+    params.set("page", newPage.toString());
 
     router.push(`?${params.toString()}`);
   };
@@ -33,11 +33,11 @@ const Pagination: FC<PaginationProps> = ({ page, totalPages }) => {
         disabled={page <= 1}
         aria-label="Previous page"
         className={twMerge(
-          'p-2 rounded-full transition-colors flex items-center justify-center',
-          'border border-neutral-200 dark:border-neutral-700',
+          "p-2 rounded-full transition-colors flex items-center justify-center",
+          "border border-neutral-200 dark:border-neutral-700",
           page <= 1
-            ? 'opacity-50 cursor-not-allowed text-neutral-400'
-            : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200'
+            ? "opacity-50 cursor-not-allowed text-neutral-400"
+            : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200",
         )}
       >
         <KeyboardArrowLeftIcon />
@@ -52,11 +52,11 @@ const Pagination: FC<PaginationProps> = ({ page, totalPages }) => {
         disabled={page >= totalPages}
         aria-label="Next page"
         className={twMerge(
-          'p-2 rounded-full transition-colors flex items-center justify-center',
-          'border border-neutral-200 dark:border-neutral-700',
+          "p-2 rounded-full transition-colors flex items-center justify-center",
+          "border border-neutral-200 dark:border-neutral-700",
           page >= totalPages
-            ? 'opacity-50 cursor-not-allowed text-neutral-400'
-            : 'hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200'
+            ? "opacity-50 cursor-not-allowed text-neutral-400"
+            : "hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-700 dark:text-neutral-200",
         )}
       >
         <KeyboardArrowRightIcon />

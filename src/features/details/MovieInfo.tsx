@@ -1,15 +1,16 @@
-
-import Image from 'next/image';
-import { MovieDetails } from '@/@types/tmdb';
-import { getPosterUrl } from '@/@utils/tmdbImage';
+import Image from "next/image";
+import { MovieDetails } from "@/@types/tmdb";
+import { getPosterUrl } from "@/@utils/tmdbImage";
 
 type MovieInfoProps = {
   movie: MovieDetails;
 };
 
 export default function MovieInfo({ movie }: MovieInfoProps) {
-  const releaseYear = movie.release_date ? new Date(movie.release_date).getFullYear() : 'N/A';
-  
+  const releaseYear = movie.release_date
+    ? new Date(movie.release_date).getFullYear()
+    : "N/A";
+
   const formatRuntime = (minutes: number) => {
     const hours = Math.floor(minutes / 60);
     const mins = minutes % 60;
@@ -21,7 +22,7 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
       {/* Poster */}
       <div className="w-full md:w-1/3 lg:w-1/4 flex-shrink-0 relative aspect-[2/3] rounded-xl overflow-hidden shadow-lg bg-neutral-200 dark:bg-neutral-800">
         <Image
-          src={getPosterUrl(movie.poster_path, 'w500')}
+          src={getPosterUrl(movie.poster_path, "w500")}
           alt={movie.title}
           fill
           priority
@@ -34,7 +35,10 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
       <div className="flex-1 space-y-6">
         <div>
           <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">
-            {movie.title} <span className="text-neutral-500 font-normal">({releaseYear})</span>
+            {movie.title}{" "}
+            <span className="text-neutral-500 font-normal">
+              ({releaseYear})
+            </span>
           </h1>
           {movie.tagline && (
             <p className="text-lg text-neutral-500 dark:text-neutral-400 italic">
@@ -75,7 +79,9 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
 
         {/* Overview */}
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">Overview</h3>
+          <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+            Overview
+          </h3>
           <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
             {movie.overview}
           </p>

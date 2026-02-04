@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import { FC, ReactNode } from "react";
 
 type GenreHeaderProps = {
   title: string;
@@ -19,11 +19,7 @@ const GenreHeader: FC<GenreHeaderProps> = ({ title, movieCount, children }) => {
           </p>
         )}
       </div>
-      {children && (
-        <div className="w-full md:w-auto">
-          {children}
-        </div>
-      )}
+      {children && <div className="w-full md:w-auto">{children}</div>}
     </div>
   );
 };

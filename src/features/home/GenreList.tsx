@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Genre } from '@/@types/tmdb';
-import Container from '@/@layouts/Container';
+import Link from "next/link";
+import { Genre } from "@/@types/tmdb";
+import Container from "@/@layouts/Container";
 
 type Props = {
   genres: Genre[];
@@ -12,7 +12,9 @@ export default function GenreList({ genres }: Props) {
   return (
     <section className="py-8 bg-neutral-100 dark:bg-neutral-900 border-y border-neutral-200 dark:border-neutral-800">
       <Container>
-        <h2 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-white">Browse by Genre</h2>
+        <h2 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-white">
+          Browse by Genre
+        </h2>
         <div className="flex flex-wrap gap-3">
           {genres.map((genre) => (
             <Link

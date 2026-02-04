@@ -1,5 +1,4 @@
-
-import Skeleton from '@/@components/ui/Skeleton';
+import Skeleton from "@/@components/ui/Skeleton";
 
 export default function MovieLoading() {
   return (
@@ -15,7 +14,7 @@ export default function MovieLoading() {
         <div className="flex-1 space-y-6">
           {/* Title */}
           <Skeleton className="h-10 w-3/4 md:w-1/2" />
-          
+
           {/* Rating + Release Date */}
           <div className="flex items-center gap-4">
             <Skeleton className="h-6 w-16" />
@@ -45,7 +44,10 @@ export default function MovieLoading() {
         <Skeleton className="h-8 w-32" /> {/* "Cast" Title */}
         <div className="flex gap-4 overflow-x-hidden">
           {Array.from({ length: 8 }).map((_, i) => (
-            <div key={i} className="flex flex-col items-center space-y-2 min-w-[100px]">
+            <div
+              key={i}
+              className="flex flex-col items-center space-y-2 min-w-[100px]"
+            >
               <Skeleton className="w-20 h-20 rounded-full" />
               <Skeleton className="h-4 w-16" />
             </div>

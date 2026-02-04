@@ -1,6 +1,6 @@
-import Skeleton from '@/@components/ui/Skeleton';
-import MovieSkeleton from '@/@components/movie/MovieSkeleton';
-import Container from '@/@layouts/Container';
+import Skeleton from "@/@components/ui/Skeleton";
+import MovieSkeleton from "@/@components/movie/MovieSkeleton";
+import Container from "@/@layouts/Container";
 
 export default function Loading() {
   return (
@@ -35,8 +35,8 @@ export default function Loading() {
 
       {/* 4) A few genre sections (e.g. 3 sections) */}
       {Array.from({ length: 3 }).map((_, i) => (
-        <section 
-          key={i} 
+        <section
+          key={i}
           className="py-8 border-b border-neutral-200 dark:border-neutral-800 last:border-0"
         >
           <Container>
