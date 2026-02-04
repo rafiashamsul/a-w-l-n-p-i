@@ -1,14 +1,46 @@
+import { Suspense } from 'react';
+import { getGenres, getTopRatedMovies } from '@/@services/tmdb';
+import TopRatedSection from '@/features/home/TopRatedSection';
+import GenreList from '@/features/home/GenreList';
+import PopularByGenreRows from '@/features/home/PopularByGenreRows';
+import EmptyState from '@/@components/ui/EmptyState';
+import { Genre, PaginatedResponse, Movie } from '@/@types/tmdb';
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            Tmdb movie discovery. I will edit the page soon.
-          </h1>
-        </div>
+export default async function Home() {
+  let genresData: { genres: Genre[] } | undefined;
+  let topRatedData: PaginatedResponse<Movie> | undefined;
+  let error = null;
+
+  try {
+    [genresData, topRatedData] = await Promise.all([
+      getGenres(),
+      getTopRatedMovies()
+    ]);
+  } catch (err) {
+    console.error('Failed to load home page data:', err);
+    error = err;
+  }
+
+  if (error || !genresData || !topRatedData) {
+    return (
+      <main className="min-h-screen flex items-center justify-center p-4">
+        <EmptyState 
+          title="Something went wrong" 
+          description="We couldn't load the movies. Please try again later."
+          actionLabel="Retry"
+          actionHref="/"
+        />
       </main>
-    </div>
+    );
+  }
+
+  return (
+    <main className="min-h-screen pb-16 bg-white dark:bg-black">
+      <TopRatedSection movies={topRatedData.results} />
+      <GenreList genres={genresData.genres} />
+      <Suspense fallback={<div className="py-12 text-center text-neutral-500">Loading popular movies...</div>}>
+        <PopularByGenreRows genres={genresData.genres} />
+      </Suspense>
+    </main>
   );
 }
