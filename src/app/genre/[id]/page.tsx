@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { getGenres, getMoviesByGenre } from "@/@services/tmdb";
 import MovieGrid from "@/@components/movie/MovieGrid";
 import Container from "@/@layouts/Container";
@@ -7,7 +6,6 @@ import ErrorState from "@/@components/ui/ErrorState";
 import GenreHeader from "@/features/genre/GenreHeader";
 import SortDropdown from "@/features/genre/SortDropdown";
 import Pagination from "@/features/genre/Pagination";
-import MovieSkeleton from "@/@components/movie/MovieSkeleton";
 
 type PageProps = {
   params: Promise<{ id: string }>;
