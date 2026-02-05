@@ -34,7 +34,7 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
       {/* Details */}
       <div className="flex-1 space-y-6">
         <div>
-          <h1 className="text-3xl md:text-4xl font-bold text-neutral-900 dark:text-neutral-50 mb-2">
+          <h1 className="text-3xl md:text-4xl font-bold  mb-2">
             {movie.title}{" "}
             <span className="text-neutral-500 font-normal">
               ({releaseYear})
@@ -51,18 +51,12 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
         <div className="flex flex-wrap items-center gap-4 text-sm md:text-base">
           <div className="flex items-center gap-1">
             <span className="text-yellow-500 text-lg">★</span>
-            <span className="font-semibold text-neutral-900 dark:text-neutral-100">
+            <span className="font-semibold text-foreground/80">
               {movie.vote_average.toFixed(1)}
             </span>
           </div>
           <span className="text-neutral-300">•</span>
-          <span className="text-neutral-700 dark:text-neutral-300">
-            {formatRuntime(movie.runtime)}
-          </span>
-          <span className="text-neutral-300">•</span>
-          <span className="text-neutral-700 dark:text-neutral-300">
-            {movie.release_date}
-          </span>
+          <span className="text-foreground/80">{movie.release_date}</span>
         </div>
 
         {/* Genres */}
@@ -79,9 +73,7 @@ export default function MovieInfo({ movie }: MovieInfoProps) {
 
         {/* Overview */}
         <div className="space-y-2">
-          <h3 className="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
-            Overview
-          </h3>
+          <h3 className="text-xl font-semibold text-foreground">Overview</h3>
           <p className="text-neutral-600 dark:text-neutral-300 leading-relaxed text-lg">
             {movie.overview}
           </p>

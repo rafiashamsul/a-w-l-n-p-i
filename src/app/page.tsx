@@ -35,7 +35,7 @@ export default async function Home() {
   }
 
   return (
-    <main className="min-h-screen pb-16 bg-white dark:bg-black">
+    <main className="min-h-screen pb-16 bg-background">
       <TopRatedSection movies={topRatedData.results} />
       <GenreList genres={genresData.genres} />
       <Suspense

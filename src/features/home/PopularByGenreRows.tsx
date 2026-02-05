@@ -25,7 +25,7 @@ async function GenreRow({ genre }: { genre: Genre }) {
     <section className="py-8 border-b border-neutral-200 dark:border-neutral-800 last:border-0">
       <Container>
         <div className="flex justify-between items-end mb-6">
-          <h2 className="text-2xl font-bold text-neutral-900 dark:text-white">
+          <h2 className="text-2xl font-bold text-foreground">
             Popular in {genre.name}
           </h2>
           <Link

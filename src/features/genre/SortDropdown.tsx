@@ -55,10 +55,10 @@ const SortDropdown: FC = () => {
             },
             color: "inherit",
           }}
-          className="dark:text-white"
+          className="text-foreground"
           MenuProps={{
             PaperProps: {
-              className: "dark:bg-neutral-800 dark:text-white",
+              className: "dark:bg-neutral-800 text-foreground",
             },
           }}
         >

@@ -20,7 +20,7 @@ const SearchResults: FC<SearchResultsProps> = ({
   return (
     <div className="py-8">
       <Container>
-        <h1 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-white">
+        <h1 className="text-2xl font-bold mb-6 text-foreground">
           Search Results for &quot;{query}&quot;
         </h1>
 

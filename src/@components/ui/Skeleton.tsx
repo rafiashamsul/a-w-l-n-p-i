@@ -9,7 +9,7 @@ const Skeleton = ({ className }: SkeletonProps) => (
   <div
     className={twMerge(
       clsx(
-        'bg-gray-200 dark:bg-gray-700 rounded animate-pulse',
+        'bg-neutral-200 dark:bg-neutral-800 rounded animate-pulse',
         className
       )
     )}

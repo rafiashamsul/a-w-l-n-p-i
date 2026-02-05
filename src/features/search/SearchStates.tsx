@@ -16,7 +16,7 @@ export const SearchInitialState: FC = () => (
 export const SearchErrorState: FC = () => (
   <div className="py-8">
     <Container>
-      <h1 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-white">
+      <h1 className="text-2xl font-bold mb-6 text-foreground">
         Search Results
       </h1>
       <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 text-center">
@@ -38,7 +38,7 @@ type SearchEmptyStateProps = {
 export const SearchEmptyState: FC<SearchEmptyStateProps> = ({ query }) => (
   <div className="py-8">
     <Container>
-      <h1 className="text-2xl font-bold mb-6 text-neutral-900 dark:text-white">
+      <h1 className="text-2xl font-bold mb-6 text-foreground">
         Search Results for &quot;{query}&quot;
       </h1>
       <EmptyState

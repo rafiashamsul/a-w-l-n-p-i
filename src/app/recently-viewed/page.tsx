@@ -21,7 +21,7 @@ export default function RecentlyViewedPage() {
   return (
     <div className="py-8">
       <Container>
-        <h1 className="text-3xl font-bold mb-6 text-neutral-900 dark:text-white">
+        <h1 className="text-3xl font-bold mb-6 text-foreground">
           Recently Viewed
         </h1>
 

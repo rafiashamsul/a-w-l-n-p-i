@@ -43,7 +43,7 @@ const Pagination: FC<PaginationProps> = ({ page, totalPages }) => {
         <KeyboardArrowLeftIcon />
       </button>
 
-      <span className="text-sm font-medium text-neutral-600 dark:text-neutral-300">
+      <span className="text-sm font-medium text-foreground/80">
         Page {page} of {totalPages}
       </span>
 

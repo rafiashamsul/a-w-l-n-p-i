@@ -4,7 +4,7 @@ import Container from "@/@layouts/Container";
 
 export default function Loading() {
   return (
-    <main className="min-h-screen pb-16 bg-white dark:bg-black">
+    <main className="min-h-screen pb-16 bg-background">
       {/* 1) Page heading area */}
       <div className="pt-12 pb-4">
         <Container>

@@ -17,6 +17,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ThemeToggle from "@/@components/theme/ThemeToggle";
 
 const Navbar = () => {
   const [search, setSearch] = useState("");
@@ -170,6 +171,10 @@ const Navbar = () => {
             />
           </div>
         </form>
+
+        <div className="ml-2 text-gray-600 dark:text-gray-300">
+          <ThemeToggle />
+        </div>
 
         {/* Mobile Drawer */}
         <nav>

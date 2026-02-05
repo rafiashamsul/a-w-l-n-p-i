@@ -15,9 +15,7 @@ export default function CastList({ cast }: CastListProps) {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100">
-        Top Cast
-      </h2>
+      <h2 className="text-2xl font-bold text-foreground">Top Cast</h2>
       <div className="flex overflow-x-auto pb-4 gap-4 md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 md:overflow-visible md:pb-0">
         {topCast.map((actor) => (
           <div
@@ -34,11 +32,11 @@ export default function CastList({ cast }: CastListProps) {
               />
             </div>
             <div className="p-3">
-              <p className="font-semibold text-neutral-900 dark:text-neutral-100 text-sm truncate">
+              <p className="font-semibold text-foreground text-sm truncate">
                 {actor.name}
               </p>
               <p
-                className="text-xs text-neutral-500 dark:text-neutral-400 truncate"
+                className="text-xs text-foreground/60 truncate"
                 title={actor.character}
               >
                 {actor.character}

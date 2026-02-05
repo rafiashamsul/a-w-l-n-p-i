@@ -21,7 +21,7 @@ export default function TopRatedSection({ movies }: Props) {
   return (
     <section className="py-12">
       <Container>
-        <h2 className="text-3xl font-bold mb-8 text-neutral-900 dark:text-white">
+        <h2 className="text-3xl font-bold mb-8 text-foreground">
           Top Rated Movies
         </h2>
         <MovieGrid movies={movies} />
