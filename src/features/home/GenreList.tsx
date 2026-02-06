@@ -20,7 +20,7 @@ export default function GenreList({ genres }: Props) {
             <Link
               key={genre.id}
               href={`/genre/${genre.id}`}
-              className="px-4 py-2 bg-white dark:bg-neutral-800 rounded-full shadow-sm hover:shadow-md hover:bg-primary hover:text-white dark:hover:bg-primary transition-all text-sm font-medium text-neutral-700 dark:text-neutral-300"
+              className="px-4 py-2 bg-white dark:bg-neutral-800 rounded-full shadow-sm hover:shadow-md hover:bg-primary hover:text-gray-400 dark:hover:bg-primary transition-all text-sm font-medium text-neutral-700 dark:text-neutral-300"
             >
               {genre.name}
             </Link>
