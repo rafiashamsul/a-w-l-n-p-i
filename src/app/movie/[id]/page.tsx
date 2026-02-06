@@ -20,9 +20,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   try {
     const movie = await getMovieDetails(parseInt(id));
+    const description =
+      movie.overview.length > 150
+        ? `${movie.overview.substring(0, 150)}...`
+        : movie.overview;
+
     return {
-      title: `${movie.title} - TMDB Discovery`,
-      description: movie.overview,
+      title: movie.title,
+      description: description,
+      openGraph: {
+        title: movie.title,
+        description: description,
+        type: "video.movie",
+        images: movie.poster_path
+          ? [`https://image.tmdb.org/t/p/w500${movie.poster_path}`]
+          : [],
+      },
     };
   } catch {
     return {

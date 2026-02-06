@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getGenres, getMoviesByGenre } from "@/@services/tmdb";
 import MovieGrid from "@/@components/movie/MovieGrid";
 import Container from "@/@layouts/Container";
@@ -11,6 +12,41 @@ type PageProps = {
   params: Promise<{ id: string }>;
   searchParams: Promise<{ sortBy?: string; page?: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { id } = await params;
+  const genreId = parseInt(id);
+
+  if (isNaN(genreId)) {
+    return {
+      title: "Invalid Genre",
+    };
+  }
+
+  try {
+    const { genres } = await getGenres();
+    const genre = genres.find((g) => g.id === genreId);
+
+    if (!genre) {
+      return {
+        title: "Genre Not Found",
+      };
+    }
+
+    return {
+      title: `${genre.name} Movies`,
+      description: `Browse popular and top rated ${genre.name} movies.`,
+      openGraph: {
+        title: `${genre.name} Movies`,
+        description: `Browse popular and top rated ${genre.name} movies.`,
+      },
+    };
+  } catch {
+    return {
+      title: "Genre",
+    };
+  }
+}
 
 export default async function GenrePage({ params, searchParams }: PageProps) {
   const { id } = await params;

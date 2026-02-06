@@ -17,9 +17,23 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TMDB Movie Discovery",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  ),
+  title: {
+    default: "Movie Discovery",
+    template: "%s | Movie Discovery",
+  },
   description:
     "Browse top rated movies, explore genres, and discover details using TMDB.",
+  openGraph: {
+    title: "Movie Discovery",
+    description:
+      "Browse top rated movies, explore genres, and discover details using TMDB.",
+    siteName: "Movie Discovery",
+    type: "website",
+    locale: "en_US",
+  },
 };
 
 export default function RootLayout({

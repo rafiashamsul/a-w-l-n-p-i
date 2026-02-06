@@ -31,7 +31,6 @@ async function fetcher<T>(
 
   // Debug logging for Vercel
   const sanitizedUrl = url.toString().replace(TMDB_API_KEY, "***");
-  console.log(`[TMDB] Fetching: ${sanitizedUrl}`);
 
   try {
     const res = await fetch(url.toString(), { next: { revalidate: 60 } });
