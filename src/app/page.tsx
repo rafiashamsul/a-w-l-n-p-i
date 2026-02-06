@@ -1,6 +1,12 @@
 import { Suspense } from "react";
+import { Metadata } from "next";
 import { getGenres, getTopRatedMovies } from "@/@services/tmdb";
 import TopRatedSection from "@/features/home/TopRatedSection";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description: "Browse top rated movies and discover films by genre.",
+};
 import GenreList from "@/features/home/GenreList";
 import PopularByGenreRows from "@/features/home/PopularByGenreRows";
 import EmptyState from "@/@components/ui/EmptyState";

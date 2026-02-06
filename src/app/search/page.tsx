@@ -16,10 +16,17 @@ export async function generateMetadata({
   searchParams,
 }: SearchPageProps): Promise<Metadata> {
   const { q } = await searchParams;
+  const query = q?.trim();
+
+  if (query) {
+    return {
+      title: `Search results for "${query}"`,
+      description: `Search results for ${query} movies.`,
+    };
+  }
+
   return {
-    title: q
-      ? `Search results for "${q}" - TMDB Discovery`
-      : "Search Movies - TMDB Discovery",
+    title: "Search Movies",
   };
 }
 
