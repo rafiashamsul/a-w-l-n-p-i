@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
@@ -26,17 +26,21 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const debouncedSearch = useDebounce(search, 500);
+  const isUserTyping = useRef(false);
 
   useEffect(() => {
     if (debouncedSearch.trim()) {
       router.push(`/search?q=${encodeURIComponent(debouncedSearch.trim())}`);
+    } else if (pathname.startsWith("/search") && isUserTyping.current) {
+      router.push("/");
     }
-  }, [debouncedSearch, router]);
+  }, [debouncedSearch, router, pathname]);
 
   useEffect(() => {
     if (!pathname.startsWith("/search")) {
       const timeout = setTimeout(() => {
         setSearch("");
+        isUserTyping.current = false;
       }, 0);
       return () => clearTimeout(timeout);
     }
@@ -181,7 +185,10 @@ const Navbar = () => {
             <input
               type="text"
               value={search}
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => {
+                setSearch(e.target.value);
+                isUserTyping.current = true;
+              }}
               placeholder="Search movies..."
               className="w-full bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 text-sm rounded-full pl-10 pr-4 py-2 border border-transparent focus:border-blue-500 focus:bg-white dark:focus:bg-gray-900 focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-900 transition-all duration-200 outline-none placeholder-gray-500"
               autoComplete="off"
