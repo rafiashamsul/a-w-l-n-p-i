@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import Image from "next/image";
@@ -24,6 +25,22 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const debouncedSearch = useDebounce(search, 500);
+
+  useEffect(() => {
+    if (debouncedSearch.trim()) {
+      router.push(`/search?q=${encodeURIComponent(debouncedSearch.trim())}`);
+    }
+  }, [debouncedSearch, router]);
+
+  useEffect(() => {
+    if (!pathname.startsWith("/search")) {
+      const timeout = setTimeout(() => {
+        setSearch("");
+      }, 0);
+      return () => clearTimeout(timeout);
+    }
+  }, [pathname]);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
